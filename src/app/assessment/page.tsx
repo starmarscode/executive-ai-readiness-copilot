@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AssessmentData, initialAssessmentData } from "@/types/assessment";
 import StepIndicator from "@/components/assessment/StepIndicator";
-import SubmittedScreen from "@/components/assessment/SubmittedScreen";
+import ResultsScreen from "@/components/assessment/ResultsScreen";
 import Step1CompanyContext from "@/components/assessment/steps/Step1CompanyContext";
 import Step2AIDataReadiness from "@/components/assessment/steps/Step2AIDataReadiness";
 import Step3OrganizationalReadiness from "@/components/assessment/steps/Step3OrganizationalReadiness";
@@ -49,7 +49,7 @@ export default function AssessmentPage() {
   }
 
   if (submitted) {
-    return <SubmittedScreen onReset={handleReset} />;
+    return <ResultsScreen data={data} onReset={handleReset} />;
   }
 
   const stepProps = { data, onChange: handleChange };
