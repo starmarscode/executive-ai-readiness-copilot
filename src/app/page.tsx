@@ -1,3 +1,4 @@
+import Link from "next/link";
 import FeatureCard from "../components/FeatureCard";
 const featureCards = [
   {
@@ -37,9 +38,12 @@ export default function Home() {
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <button className="rounded-xl bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-800">
+            <Link
+              href="/assessment"
+              className="rounded-xl bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-800"
+            >
               Start assessment
-            </button>
+            </Link>
 
             <button className="rounded-xl border border-slate-300 px-6 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50">
               Preview sample output
