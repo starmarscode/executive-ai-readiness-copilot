@@ -5,8 +5,6 @@ type Props = {
 };
 
 export default function StepIndicator({ currentStep, totalSteps, stepLabels }: Props) {
-  const progressPct = ((currentStep - 1) / (totalSteps - 1)) * 100;
-
   return (
     <div className="mb-10">
       {/* Numbered circles + connecting lines */}
@@ -41,20 +39,12 @@ export default function StepIndicator({ currentStep, totalSteps, stepLabels }: P
         })}
       </div>
 
-      {/* Progress bar */}
-      <div className="mt-4 h-1 w-full rounded-full bg-slate-100">
-        <div
-          className="h-1 rounded-full bg-slate-900 transition-all duration-300"
-          style={{ width: `${progressPct}%` }}
-        />
-      </div>
-
       {/* Step label */}
-      <div className="mt-3 flex items-baseline justify-between">
-        <p className="text-xs text-slate-500">
+      <div className="mt-4 flex items-baseline justify-between">
+        <p className="text-xs text-slate-400">
           Step {currentStep} of {totalSteps}
         </p>
-        <p className="text-xs font-medium text-slate-700">
+        <p className="text-xs font-semibold text-slate-700">
           {stepLabels[currentStep - 1]}
         </p>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { AssessmentData, initialAssessmentData } from "@/types/assessment";
 import StepIndicator from "@/components/assessment/StepIndicator";
 import ResultsScreen from "@/components/assessment/ResultsScreen";
@@ -64,7 +65,16 @@ export default function AssessmentPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white text-slate-900">
+    <div className="min-h-screen bg-white text-slate-900">
+      <header className="sticky top-0 z-10 border-b border-slate-100 bg-white/90 backdrop-blur-sm">
+        <div className="mx-auto flex w-full max-w-2xl items-center px-6 py-4 sm:px-10">
+          <Link href="/" className="text-sm font-semibold tracking-tight text-slate-900">
+            AI Readiness Copilot
+          </Link>
+        </div>
+      </header>
+
+      <main>
       <div className="mx-auto w-full max-w-2xl px-6 py-12 sm:px-10">
         <StepIndicator
           currentStep={currentStep}
@@ -108,6 +118,7 @@ export default function AssessmentPage() {
           )}
         </div>
       </div>
-    </main>
+      </main>
+    </div>
   );
 }

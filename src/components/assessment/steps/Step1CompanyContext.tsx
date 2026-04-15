@@ -21,13 +21,13 @@ const companySizes: CompanySize[] = ["<50", "50–500", "500–5000", "5000+"];
 const businessModels: BusinessModel[] = ["B2B", "B2C", "B2B2C", "Internal/Government"];
 
 const selectClass =
-  "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 focus:border-slate-400 focus:outline-none";
+  "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900/10";
 
 export default function Step1CompanyContext({ data, onChange }: Props) {
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <h2 className="text-xl font-semibold text-slate-900">Company context</h2>
+        <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Company context</h2>
         <p className="mt-1 text-sm text-slate-500">
           Help us understand your organization before we assess AI readiness.
         </p>
@@ -39,7 +39,7 @@ export default function Step1CompanyContext({ data, onChange }: Props) {
           value={data.companyName}
           onChange={(e) => onChange("companyName", e.target.value)}
           placeholder="Acme Corp"
-          className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-400 focus:outline-none"
+          className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900/10"
         />
       </FormField>
 
@@ -63,7 +63,7 @@ export default function Step1CompanyContext({ data, onChange }: Props) {
               key={size}
               className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 text-sm transition
                 ${data.companySize === size
-                  ? "border-slate-900 bg-slate-50 font-medium text-slate-900"
+                  ? "border-slate-900 bg-slate-50 font-medium text-slate-900 ring-1 ring-inset ring-slate-900/10"
                   : "border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50"
                 }`}
             >

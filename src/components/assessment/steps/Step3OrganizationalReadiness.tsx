@@ -25,7 +25,7 @@ const aiMotivationOptions: AIMotivation[] = [
 function radioBlockClass(selected: boolean) {
   return `flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 text-sm transition ${
     selected
-      ? "border-slate-900 bg-slate-50 font-medium text-slate-900"
+      ? "border-slate-900 bg-slate-50 font-medium text-slate-900 ring-1 ring-inset ring-slate-900/10"
       : "border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50"
   }`;
 }
@@ -41,7 +41,7 @@ export default function Step3OrganizationalReadiness({ data, onChange }: Props) 
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <h2 className="text-xl font-semibold text-slate-900">Organizational readiness</h2>
+        <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Organizational readiness</h2>
         <p className="mt-1 text-sm text-slate-500">
           Help us understand your team's capacity and leadership alignment for AI adoption.
         </p>
@@ -54,7 +54,7 @@ export default function Step3OrganizationalReadiness({ data, onChange }: Props) 
               key={String(val)}
               className={`flex flex-1 cursor-pointer items-center justify-center rounded-xl border px-4 py-3 text-sm transition ${
                 data.hasAIChampion === val
-                  ? "border-slate-900 bg-slate-50 font-medium text-slate-900"
+                  ? "border-slate-900 bg-slate-50 font-medium text-slate-900 ring-1 ring-inset ring-slate-900/10"
                   : "border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50"
               }`}
             >
@@ -96,7 +96,7 @@ export default function Step3OrganizationalReadiness({ data, onChange }: Props) 
               key={String(val)}
               className={`flex flex-1 cursor-pointer items-center justify-center rounded-xl border px-4 py-3 text-sm transition ${
                 data.hasAITraining === val
-                  ? "border-slate-900 bg-slate-50 font-medium text-slate-900"
+                  ? "border-slate-900 bg-slate-50 font-medium text-slate-900 ring-1 ring-inset ring-slate-900/10"
                   : "border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50"
               }`}
             >

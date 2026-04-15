@@ -1,5 +1,6 @@
 import Link from "next/link";
 import FeatureCard from "../components/FeatureCard";
+
 const featureCards = [
   {
     title: "Deterministic scoring",
@@ -17,41 +18,58 @@ const featureCards = [
       "A practical starting plan focused on credibility, clarity, and near-term action.",
   },
 ];
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-slate-900">
-      <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-6 py-16 sm:px-10 lg:px-12">
+    <main className="min-h-screen bg-slate-950 text-white">
+      {/* Radial glow behind headline */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-1/2 top-0 h-[600px] w-[900px] -translate-x-1/2 -translate-y-1/4 rounded-full bg-slate-700/20 blur-3xl" />
+      </div>
+
+      <section className="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-6 py-20 sm:px-10 lg:px-12">
         <div className="max-w-3xl">
-          <div className="mb-6 inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600">
+          {/* Pill badge */}
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/60 px-4 py-1.5 text-xs font-medium tracking-wide text-slate-400 backdrop-blur-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
             Executive AI Readiness Copilot
           </div>
 
-          <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-            Assess AI readiness. Identify high-value opportunities. Build a
-            practical roadmap.
+          {/* Headline */}
+          <h1 className="max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.75rem] lg:leading-[1.1]">
+            Assess AI readiness.{" "}
+            <span className="text-slate-400">
+              Identify high-value opportunities.
+            </span>{" "}
+            Build a practical roadmap.
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-            A focused executive-facing MVP that helps leaders evaluate
+          {/* Subheading */}
+          <p className="mt-7 max-w-xl text-base leading-8 text-slate-400 sm:text-lg">
+            A focused executive-facing tool that helps leaders evaluate
             organizational AI readiness, surface priority gaps, and generate a
             clear 30/60/90-day action plan.
           </p>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          {/* CTAs */}
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/assessment"
-              className="rounded-xl bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-800"
+              className="inline-flex items-center justify-center rounded-xl bg-white px-7 py-3.5 text-sm font-semibold text-slate-900 shadow-lg transition hover:bg-slate-100 active:scale-[0.98]"
             >
               Start assessment
+              <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
             </Link>
-
-            <button className="rounded-xl border border-slate-300 px-6 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50">
+            <button className="inline-flex items-center justify-center rounded-xl border border-slate-700 px-7 py-3.5 text-sm font-medium text-slate-300 transition hover:border-slate-500 hover:text-white">
               Preview sample output
             </button>
           </div>
         </div>
 
-        <div className="mt-16 grid gap-4 sm:grid-cols-3">
+        {/* Feature cards */}
+        <div className="mt-20 grid gap-4 sm:grid-cols-3">
           {featureCards.map((card) => (
             <FeatureCard
               key={card.title}
@@ -60,6 +78,11 @@ export default function Home() {
             />
           ))}
         </div>
+
+        {/* Footer line */}
+        <p className="mt-16 text-xs text-slate-600">
+          No data stored. No account required. Results generated in seconds.
+        </p>
       </section>
     </main>
   );

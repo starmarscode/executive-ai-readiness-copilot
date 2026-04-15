@@ -44,7 +44,7 @@ const primaryConcernOptions: PrimaryConcern[] = [
 function radioBlockClass(selected: boolean) {
   return `flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 text-sm transition ${
     selected
-      ? "border-slate-900 bg-slate-50 font-medium text-slate-900"
+      ? "border-slate-900 bg-slate-50 font-medium text-slate-900 ring-1 ring-inset ring-slate-900/10"
       : "border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50"
   }`;
 }
@@ -60,7 +60,7 @@ export default function Step4StrategicPriorities({ data, onChange }: Props) {
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <h2 className="text-xl font-semibold text-slate-900">Strategic priorities</h2>
+        <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Strategic priorities</h2>
         <p className="mt-1 text-sm text-slate-500">
           Tell us where you want AI to have the most impact and your constraints.
         </p>
@@ -143,7 +143,7 @@ export default function Step4StrategicPriorities({ data, onChange }: Props) {
         <select
           value={data.primaryConcern}
           onChange={(e) => onChange("primaryConcern", e.target.value as PrimaryConcern | "")}
-          className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 focus:border-slate-400 focus:outline-none"
+          className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900/10"
         >
           <option value="" disabled>Select your top concern</option>
           {primaryConcernOptions.map((c) => (
