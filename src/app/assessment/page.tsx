@@ -11,10 +11,10 @@ import Step3OrganizationalReadiness from "@/components/assessment/steps/Step3Org
 import Step4StrategicPriorities from "@/components/assessment/steps/Step4StrategicPriorities";
 
 const STEP_LABELS = [
-  "Company Context",
-  "AI & Data Readiness",
-  "Organizational Readiness",
-  "Strategic Priorities",
+  "Company context",
+  "AI & data readiness",
+  "Organizational readiness",
+  "Strategic priorities",
 ];
 
 const TOTAL_STEPS = 4;
@@ -67,7 +67,8 @@ export default function AssessmentPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <header className="sticky top-0 z-10 border-b border-slate-100 bg-white/90 backdrop-blur-sm">
-        <div className="mx-auto flex w-full max-w-2xl items-center px-6 py-4 sm:px-10">
+        <div className="mx-auto flex w-full max-w-2xl items-center gap-2 px-6 py-4 sm:px-10">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
           <Link href="/" className="text-sm font-semibold tracking-tight text-slate-900">
             AI Readiness Copilot
           </Link>
@@ -91,7 +92,7 @@ export default function AssessmentPage() {
             <button
               type="button"
               onClick={handleBack}
-              className="rounded-xl border border-slate-300 px-6 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+              className="rounded-xl border border-slate-300 px-6 py-3.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
             >
               Back
             </button>
@@ -103,7 +104,7 @@ export default function AssessmentPage() {
             <button
               type="button"
               onClick={handleNext}
-              className="rounded-xl bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-800"
+              className="rounded-xl bg-slate-900 px-6 py-3.5 text-sm font-medium text-white transition hover:bg-slate-800"
             >
               Next
             </button>
@@ -111,7 +112,7 @@ export default function AssessmentPage() {
             <button
               type="button"
               onClick={handleSubmit}
-              className="rounded-xl bg-slate-900 px-6 py-3 text-sm font-medium text-white transition hover:bg-slate-800"
+              className="rounded-xl bg-slate-900 px-6 py-3.5 text-sm font-medium text-white transition hover:bg-slate-800"
             >
               Generate my readiness report
             </button>

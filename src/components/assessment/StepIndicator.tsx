@@ -17,10 +17,10 @@ export default function StepIndicator({ currentStep, totalSteps, stepLabels }: P
           return (
             <div key={step} className="flex flex-1 items-center last:flex-none">
               <div
-                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-medium transition-colors
+                className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-medium transition-colors sm:h-8 sm:w-8
                   ${isCompleted || isActive
                     ? "bg-slate-900 text-white"
-                    : "bg-slate-200 text-slate-400"
+                    : "bg-slate-100 text-slate-400"
                   }`}
               >
                 {isCompleted ? (
@@ -32,7 +32,7 @@ export default function StepIndicator({ currentStep, totalSteps, stepLabels }: P
                 )}
               </div>
               {step < totalSteps && (
-                <div className="mx-2 h-px flex-1 bg-slate-200" />
+                <div className="mx-1.5 h-px flex-1 bg-slate-200 sm:mx-2" />
               )}
             </div>
           );
