@@ -35,7 +35,6 @@ This MVP does not include:
 - Next.js
 - TypeScript
 - Tailwind CSS
-- shadcn/ui
 - Vercel
 
 ## Local Development
@@ -48,6 +47,6 @@ Open http://localhost:3000 in your browser.
 
 ## Current Status
 
-Initial Next.js scaffold completed.
-Day 0 environment setup completed.
-Ready to begin MVP architecture and first real UI replacement.
+MVP feature-complete and deployed to production.
+
+Live at: https://executive-ai-readiness-copilot.vercel.app
