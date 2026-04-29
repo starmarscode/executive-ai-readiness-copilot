@@ -77,7 +77,12 @@ export async function POST(req: NextRequest) {
     // Strip markdown code fences if present
     const text = raw.replace(/^```(?:json)?\n?/, "").replace(/\n?```$/, "");
 
-    return NextResponse.json(JSON.parse(text));
+    try {
+      return NextResponse.json(JSON.parse(text));
+    } catch {
+      console.error("Failed to parse Groq response. Raw text:", text);
+      return NextResponse.json({ error: "Failed to parse report" }, { status: 500 });
+    }
   } catch (error) {
     console.error("Report generation failed:", error);
     return NextResponse.json(

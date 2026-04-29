@@ -92,6 +92,7 @@ export default function ResultsScreen({ data, onReset }: Props) {
   const tier = overallTier(scores.overall);
   const [fetchState, setFetchState] = useState<FetchState>({ status: "loading" });
   const [copied, setCopied] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
 
   const categories: CategoryScore[] = [
     scores.dataReadiness,
@@ -147,8 +148,13 @@ export default function ResultsScreen({ data, onReset }: Props) {
     setTimeout(() => setCopied(false), 2000);
   }
 
+  function handleRetry() {
+    setRetryCount((c) => c + 1);
+  }
+
   useEffect(() => {
     let cancelled = false;
+    setFetchState({ status: "loading" });
 
     async function fetchReport() {
       try {
@@ -169,8 +175,7 @@ export default function ResultsScreen({ data, onReset }: Props) {
 
     fetchReport();
     return () => { cancelled = true; };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [retryCount]);
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
@@ -228,9 +233,16 @@ export default function ResultsScreen({ data, onReset }: Props) {
             </h2>
             {fetchState.status === "loading" && <ReportSkeleton />}
             {fetchState.status === "error" && (
-              <p className="text-sm text-slate-400">
-                Unable to generate summary. Check your API key in .env.local.
-              </p>
+              <div className="flex items-center gap-3">
+                <p className="text-sm text-slate-400">Unable to generate report.</p>
+                <button
+                  type="button"
+                  onClick={handleRetry}
+                  className="text-sm font-medium text-slate-900 underline underline-offset-2 hover:text-slate-600"
+                >
+                  Retry
+                </button>
+              </div>
             )}
             {fetchState.status === "success" && (
               <p className="text-sm leading-7 text-slate-600">
@@ -257,9 +269,16 @@ export default function ResultsScreen({ data, onReset }: Props) {
               </div>
             )}
             {fetchState.status === "error" && (
-              <p className="text-sm text-slate-400">
-                Unable to generate roadmap. Check your API key in .env.local.
-              </p>
+              <div className="flex items-center gap-3">
+                <p className="text-sm text-slate-400">Unable to generate report.</p>
+                <button
+                  type="button"
+                  onClick={handleRetry}
+                  className="text-sm font-medium text-slate-900 underline underline-offset-2 hover:text-slate-600"
+                >
+                  Retry
+                </button>
+              </div>
             )}
             {fetchState.status === "success" && (
               <div className="flex flex-col gap-8">
