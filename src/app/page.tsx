@@ -1,5 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import FeatureCard from "../components/FeatureCard";
+import ResultsScreen from "../components/assessment/ResultsScreen";
+import { sampleAssessmentData } from "../lib/sample-data";
 
 const featureCards = [
   {
@@ -20,6 +25,8 @@ const featureCards = [
 ];
 
 export default function Home() {
+  const [showPreview, setShowPreview] = useState(false);
+
   return (
     <main className="min-h-screen bg-slate-900 text-white">
       {/* Radial glow behind headline */}
@@ -62,7 +69,11 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </Link>
-            <button className="inline-flex items-center justify-center rounded-xl border border-slate-700 px-7 py-3.5 text-sm font-medium text-slate-300 transition hover:border-slate-500 hover:text-white">
+            <button
+              type="button"
+              onClick={() => setShowPreview(true)}
+              className="inline-flex items-center justify-center rounded-xl border border-slate-700 px-7 py-3.5 text-sm font-medium text-slate-300 transition hover:border-slate-500 hover:text-white"
+            >
               Preview sample output
             </button>
           </div>
@@ -84,6 +95,33 @@ export default function Home() {
           No data stored. No account required. Results generated in seconds.
         </p>
       </section>
+
+      {showPreview && (
+        <div className="fixed inset-0 z-50 overflow-y-auto">
+          {/* Backdrop — sibling of content, not parent */}
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+            onClick={() => setShowPreview(false)}
+          />
+          {/* Content */}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setShowPreview(false)}
+              className="fixed right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition hover:bg-white/20"
+              aria-label="Close preview"
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <ResultsScreen
+              data={sampleAssessmentData}
+              onReset={() => setShowPreview(false)}
+            />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
