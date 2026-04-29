@@ -45,12 +45,19 @@ Based on the assessment data and readiness scores provided, generate a frank, sp
 Return ONLY valid JSON in this exact structure — no markdown, no preamble:
 {
   "executiveSummary": "3–4 sentences summarizing AI readiness, key strengths, and critical gaps. Reference the score tier and be specific to their context.",
+  "topOpportunities": ["opportunity 1", "opportunity 2", "opportunity 3"],
   "roadmap": {
     "thirtyDays": ["action 1", "action 2", "action 3"],
     "sixtyDays": ["action 1", "action 2", "action 3"],
     "ninetyDays": ["action 1", "action 2", "action 3"]
   }
 }
+
+Top opportunities guidelines:
+- Exactly 2–3 specific AI use cases this organization should pursue given their industry, data maturity, and stated priorities.
+- Each is a concrete initiative (not generic advice), written as a noun phrase (10–20 words).
+- Prioritize use cases from their stated list where the data and org readiness can support them.
+- If readiness is low, lead with a foundational opportunity (e.g. data infrastructure, pilot scoping).
 
 Roadmap guidelines:
 - 30-day actions: quick wins, audits, and stakeholder alignment. Prioritize the lowest-scoring dimension.

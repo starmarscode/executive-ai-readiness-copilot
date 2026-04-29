@@ -6,6 +6,7 @@ import { scoreAssessment, CategoryScore } from "@/lib/scoring";
 
 type GeneratedReport = {
   executiveSummary: string;
+  topOpportunities: string[];
   roadmap: {
     thirtyDays: string[];
     sixtyDays: string[];
@@ -125,6 +126,9 @@ export default function ResultsScreen({ data, onReset }: Props) {
       lines.push(
         "EXECUTIVE SUMMARY",
         fetchState.report.executiveSummary,
+        "",
+        "TOP OPPORTUNITIES",
+        ...(fetchState.report.topOpportunities ?? []).map((opp, i) => `  ${i + 1}. ${opp}`),
         "",
         "30/60/90-DAY ROADMAP",
         "",
@@ -248,6 +252,27 @@ export default function ResultsScreen({ data, onReset }: Props) {
               <p className="text-sm leading-7 text-slate-600">
                 {fetchState.report.executiveSummary}
               </p>
+            )}
+          </div>
+
+          {/* AI-generated top opportunities */}
+          <div className="mb-8">
+            <h2 className="mb-4 text-xs font-semibold uppercase tracking-widest text-slate-400">
+              Top opportunities
+            </h2>
+            {fetchState.status === "loading" && <ReportSkeleton />}
+            {fetchState.status === "error" && null}
+            {fetchState.status === "success" && (
+              <ul className="flex flex-col gap-3">
+                {(fetchState.report.topOpportunities ?? []).map((opp, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-900 text-xs font-medium text-white">
+                      {i + 1}
+                    </span>
+                    <span className="text-sm leading-6 text-slate-700">{opp}</span>
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
 
